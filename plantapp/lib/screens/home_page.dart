@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'green_plant.dart';
+
 class Homepage extends StatefulWidget {
   Homepage({Key? key}) : super(key: key);
 
@@ -9,7 +11,8 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   List<Widget> widgets = [
-    Container(color: Colors.pink),
+    GreenPlant(),
+    //Container(color: Colors.pink),
     Container(color: Colors.blue),
     Container(color: Colors.orange),
   ];
@@ -64,10 +67,30 @@ class _HomepageState extends State<Homepage> {
     bool isSelected = currentIndex == index;
     return TextButton( 
       
-      child: Text(title, style: TextStyle(color : isSelected?Colors.white: Colors.white60,
-       fontSize:isSelected ? 20:18,
-       fontWeight: isSelected ? FontWeight.bold: FontWeight.normal),
-       ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          isSelected ? Container(
+            height: 10,
+            width: 10,
+            decoration: BoxDecoration(
+              color: Colors.amber,
+              shape: BoxShape.circle,
+
+            ),
+            
+          ) : Container(
+            height : 10,
+            
+          ),
+          SizedBox( height : 10),
+          Text(title, style: TextStyle(color : isSelected?Colors.white: Colors.white60,
+           fontSize:isSelected ? 20:18,
+           fontWeight: isSelected ? FontWeight.bold: FontWeight.normal),
+           ),
+        ],
+      ),
        onPressed: () => setState(() => currentIndex = index),
         );
   }
